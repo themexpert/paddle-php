@@ -14,22 +14,23 @@ class PaddleGateway
     public function __construct($config)
     {
         self::setApiCredentials($config['paddle_vendor_id'], $config['paddle_auth_code'], $config['paddle_public_key']);
-        
+
         // print_r(self::getApiCredentials());
     }
 
-    private function setApiCredentials($vendorId, $authCode, $publicKey): bool
+    private static function setApiCredentials($vendorId, $authCode, $publicKey = ''): bool
     {
         self::$config['paddle_vendor_id']   = isset($vendorId) ? trim($vendorId)    : null;
         self::$config['paddle_auth_code']   = isset($authCode) ? trim($authCode)    : null;
         self::$config['paddle_public_key']  = isset($publicKey) ? trim($publicKey)  : null;
+
         return true;
     }
 
-    private function getApiCredentials(): array
+    private static function getApiCredentials(): array
     {
-        if (empty(self::$config['paddle_vendor_id']) || empty(self::$config['paddle_auth_code']) || empty(self::$config['paddle_public_key'])) {
-            die('You must enter your Vendor ID, Auth Codes and Public Key');
+        if (empty(self::$config['paddle_vendor_id']) || empty(self::$config['paddle_auth_code'])) {
+            die('You must enter your Vendor ID and Auth Codes.');
         }
 
         return array(
@@ -39,25 +40,57 @@ class PaddleGateway
         );
     }
 
-    public function proceedPayment($purchaseData)
+    public static function proceedPayment($purchaseData)
     {
-        $apiCredentials = self::getApiCredentials();
+        $credentials = self::getApiCredentials();
 
-        // $paymentPrice = number_format($purchase_data['price'], 2);
-		// $payment_data = array(
-		// 	'price'         => $paymentPrice,
-		// 	'date'          => $purchase_data['date'],
-		// 	'user_email'    => $purchase_data['user_email'],
-		// 	'purchase_key'  => $purchase_data['purchase_key'],
-		// 	'currency'      => edd_get_currency(),
-		// 	'downloads'     => $purchase_data['downloads'],
-		// 	'cart_details'  => $purchase_data['cart_details'],
-		// 	'user_info'     => $purchase_data['user_info'],
-		// 	'status'        => 'pending'
-		// );
+        $bodyData = array(
+            'vendor_id' => $credentials['paddle_vendor_id'],
+            'vendor_auth_code' => $credentials['paddle_auth_code'],
+        );
 
-        // number_format($number, 2, '.', ',')
-        
-        // print_r($apiCredentials);
+        $bodyData = array_merge($bodyData, $purchaseData);
+
+        self::sendHttpRequest(PADDLE_GENERATE_PAY_LINK_URL, "POST", $bodyData);
+    }
+
+    private static function sendHttpRequest($url, $type = "POST", $bodyData, $config = array())
+    {
+        // Check if cURL is not enabled
+        !extension_loaded('curl') ? die('You must enable cURL to the server.') : '';
+
+        // Initialize cURL
+        $curl = curl_init();
+
+        // Set data to cURL
+        // TODO: Set config data
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => $type,
+            CURLOPT_POSTFIELDS => json_encode($bodyData),
+            CURLOPT_HTTPHEADER => array(
+                "content-type: application/json"
+            ),
+        ));
+
+        // Get cURL responce
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        return $err ?
+            'cURL Error: ' . $err :
+            $response;
+    }
+
+    public function __distrust()
+    {
+        unset(self::$config);
     }
 }

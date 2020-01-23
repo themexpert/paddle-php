@@ -1,6 +1,6 @@
 <?php
 
-namespace ThemesGrove\PaddleGateway\Plans;
+namespace ThemesGrove\Paddle\Plans;
 
 class ListPlans
 {

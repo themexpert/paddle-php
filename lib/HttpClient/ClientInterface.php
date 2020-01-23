@@ -1,6 +1,6 @@
 <?php
 
-namespace ThemesGrove\PaddleGateway\HttpClient;
+namespace ThemesGrove\Paddle\HttpClient;
 
 interface ClientInterface
 {

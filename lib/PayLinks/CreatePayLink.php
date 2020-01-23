@@ -1,6 +1,6 @@
 <?php
 
-namespace ThemesGrove\PaddleGateway\PayLinks;
+namespace ThemesGrove\Paddle\PayLinks;
 
 class CreatePayLink
 {

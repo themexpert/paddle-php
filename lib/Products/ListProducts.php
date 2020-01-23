@@ -1,6 +1,6 @@
 <?php
 
-namespace ThemesGrove\PaddleGateway\Products;
+namespace ThemesGrove\Paddle\Products;
 
 class ListProducts
 {

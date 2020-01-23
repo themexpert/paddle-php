@@ -1,6 +1,6 @@
 <?php
 
-namespace ThemesGrove\PaddleGateway\WebHooks;
+namespace ThemesGrove\Paddle\WebHooks;
 
 class GetWebHooksHistory
 {

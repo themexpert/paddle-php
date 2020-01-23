@@ -1,6 +1,6 @@
 <?php
 
-namespace ThemesGrove\PaddleGateway\Payments;
+namespace ThemesGrove\Paddle\Payments;
 
 class ListPayments
 {

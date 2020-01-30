@@ -3,12 +3,7 @@
 require_once 'init.php';
 
 use ThemesGrove\Paddle\Paddle;
-
-$config = array(
-    'paddle_vendor_id'  => '107514',
-    'paddle_auth_code'  => '2bf8057aadd52aa08be1dd5ebf060dea16cc1d60f99ba712c6',
-    'paddle_public_key' => '',
-);
+use ThemesGrove\Paddle\Product\PayLink;
 
 $paymentData = array(
     'product_id' => 123, // from paddle product_id, for paylink leave it empty
@@ -47,5 +42,8 @@ $paymentData = array(
     'vat_postcode' => 'string',
 );
 
-$Paddle = new Paddle($config);
-echo ($Paddle::proceedPayment($paymentData));
+$paddle = new Paddle();
+$paddle::setApiCredentials('107514', '2bf8057aadd52aa08be1dd5ebf060dea16cc1d60f99ba712c6');
+
+
+echo PayLink::create($paymentData);

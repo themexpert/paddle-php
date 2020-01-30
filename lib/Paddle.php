@@ -2,94 +2,73 @@
 
 namespace ThemesGrove\Paddle;
 
+use ThemesGrove\Paddle\HttpClient\CurlClient;
+
 define("PADDLE_ROOT_URL", "https://vendors.paddle.com/");
-define('PADDLE_GENERATE_PAY_LINK_URL', PADDLE_ROOT_URL . 'api/2.0/product/generate_pay_link');
-define('PADDLE_CREATE_SUBSCRIPTION_PLAN_URL', PADDLE_ROOT_URL . 'api/2.0/subscription/plans_create');
+define("API_ROOT_URL", PADDLE_ROOT_URL . "api/2.0/");
+define("PADDLE_CREATE_SUBSCRIPTION_PLAN_URL", API_ROOT_URL . "subscription/plans_create");
 
 class Paddle
 {
-    private static $config;
+    /**
+     * Your Paddle Vendor/Account ID
+     * @var string
+     */
+    private static $vendorId;
 
-    public function __construct($config)
+    /**
+     * Your Paddle Code/Token
+     * @var string
+     */
+    private static $authCode;
+
+    /**
+     * Your Paddle Public Key
+     * @var string
+     */
+    private static $publicKey;
+
+    public function __construct($vendorId = null, $authCode = null, $publicKey = null)
     {
-        self::setApiCredentials($config['paddle_vendor_id'], $config['paddle_auth_code'], $config['paddle_public_key']);
+        if ($vendorId && $authCode) {
+            self::setApiCredentials($vendorId, $authCode, $publicKey);
+        }
     }
 
-    private static function setApiCredentials($vendorId, $authCode, $publicKey = ''): bool
+    public static function setApiCredentials($vendorId, $authCode, $publicKey = null): bool
     {
-        self::$config['paddle_vendor_id']   = isset($vendorId) ? (int) trim($vendorId)  : null;
-        self::$config['paddle_auth_code']   = isset($authCode) ? trim($authCode)        : null;
-        self::$config['paddle_public_key']  = isset($publicKey) ? trim($publicKey)      : null;
+        self::$vendorId   = (int) trim($vendorId)   ?? null;
+        self::$authCode   = trim($authCode)         ?? null;
+        self::$publicKey  = trim($publicKey)        ?? null;
 
         return true;
     }
 
-    private static function getApiCredentials(): array
+    public static function unSetApiCredentials(): bool
     {
-        if (empty(self::$config['paddle_vendor_id']) || empty(self::$config['paddle_auth_code'])) {
+        unset(self::$vendorId);
+        unset(self::$authCode);
+        unset(self::$publicKey);
+
+        return true;
+    }
+
+    public static function getApiCredentials(): array
+    {
+        if (empty(self::$vendorId) || empty(self::$authCode)) {
+            // TODO: Add Exception
             die('You must enter your Vendor ID and Auth Codes.');
         }
 
         return array(
-            'paddle_vendor_id'  => self::$config['paddle_vendor_id'],
-            'paddle_auth_code'  => self::$config['paddle_auth_code'],
-            'paddle_public_key' => self::$config['paddle_public_key'],
+            'paddle_vendor_id'  => self::$vendorId,
+            'paddle_auth_code'  => self::$authCode,
+            'paddle_public_key' => self::$publicKey,
         );
-    }
-
-    public static function proceedPayment($purchaseData)
-    {
-        $credentials = self::getApiCredentials();
-
-        $bodyData = array(
-            'vendor_id' => $credentials['paddle_vendor_id'],
-            'vendor_auth_code' => $credentials['paddle_auth_code'],
-        );
-
-        $bodyData = array_merge($bodyData, $purchaseData);
-
-        return self::sendHttpRequest(PADDLE_GENERATE_PAY_LINK_URL, "POST", $bodyData);
-    }
-
-    private static function sendHttpRequest($url, $method = "POST", $bodyData, $config = array())
-    {
-        // Check if cURL is not enabled
-        !extension_loaded('curl') ? die('You must enable cURL to the server.') : '';
-
-        $url = Util\Util::utf8($url);
-
-        // Initialize cURL
-        $curl = curl_init();
-
-        // Set data to cURL
-        // TODO: Set config data
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => strtoupper($method),
-            CURLOPT_POSTFIELDS => json_encode($bodyData),
-            CURLOPT_HTTPHEADER => array(
-                "content-type: application/json"
-            ),
-        ));
-
-        // Get cURL responce
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-
-        curl_close($curl);
-
-        return $err ?
-            'cURL Error: ' . $err :
-            $response;
     }
 
     public function __distrust()
     {
-        unset(self::$config);
+        self::unSetApiCredentials();
     }
 }

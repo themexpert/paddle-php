@@ -3,7 +3,11 @@
 require_once 'init.php';
 
 use ThemesGrove\Paddle\Paddle;
+use ThemesGrove\Paddle\Product\Coupon;
 use ThemesGrove\Paddle\Product\PayLink;
+use ThemesGrove\Paddle\Product\Product;
+use ThemesGrove\Paddle\Util\Currency;
+use ThemesGrove\Paddle\Util\Price;
 
 $paymentData = array(
     'product_id' => 123, // from paddle product_id, for paylink leave it empty
@@ -42,8 +46,49 @@ $paymentData = array(
     'vat_postcode' => 'string',
 );
 
+$couponData = array(
+    'coupon_code' => 'string',
+    'coupon_prefix' => 'string',
+    'num_coupons' => 123,
+    'description' => 'string',
+    'coupon_type' => 'product',
+    'product_ids' => 'string',
+    'discount_type' => 'flat',
+    'discount_amount' => 123,
+    'currency' => 'string',
+    'allowed_uses' => 123,
+    'expires' => 'string (date)',
+    'recurring' => 0,
+    'minimum_threshold' => 123,
+    'group' => 'string',
+);
+
+$deleteCouponData = array(
+    'coupon_code' => 'abcd',
+    'product_id' => 123
+);
+
+$updateCouponData = array(
+    'new_coupon_code' => 'string',
+    'new_group' => 'string',
+    'product_ids' => 'string',
+    'expires' => 'string (date)',
+    'allowed_uses' => 123,
+    'currency' => 'string',
+    'minimum_threshold' => 123,
+    'discount_amount' => 123,
+    'recurring' => 0,
+);
+
 $paddle = new Paddle();
 $paddle::setApiCredentials('107514', '2bf8057aadd52aa08be1dd5ebf060dea16cc1d60f99ba712c6');
 
 
-echo PayLink::create($paymentData);
+// echo PayLink::create($paymentData);
+// echo Product::list();
+// echo Coupon::list(123);
+
+// echo Coupon::create($couponData);
+// echo Coupon::delete($deleteCouponData);
+
+echo Coupon::update(111, 'string', $updateCouponData);

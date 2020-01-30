@@ -9,6 +9,7 @@ class CurlClient implements ClientInterface
     public static function sendHttpRequest($url, $method, $bodyData, $config = array())
     {
         // Check if cURL is not enabled
+        // TODO: Add Exception
         !extension_loaded('curl') ? die('You must enable cURL to the server.') : '';
 
         $url = Util::utf8($url);
@@ -38,8 +39,6 @@ class CurlClient implements ClientInterface
 
         curl_close($curl);
 
-        return $err ?
-            'cURL Error: ' . $err :
-            $response;
+        return $err ? 'cURL Error: ' . $err : $response;
     }
 }

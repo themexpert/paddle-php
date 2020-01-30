@@ -39,7 +39,7 @@ class Paddle
     {
         self::$vendorId   = (int) trim($vendorId)   ?? null;
         self::$authCode   = trim($authCode)         ?? null;
-        self::$publicKey  = trim($publicKey)        ?? null;
+        // self::$publicKey  = trim($publicKey)        ?? null;
 
         return true;
     }
@@ -48,7 +48,7 @@ class Paddle
     {
         unset(self::$vendorId);
         unset(self::$authCode);
-        unset(self::$publicKey);
+        // unset(self::$publicKey);
 
         return true;
     }
@@ -63,7 +63,7 @@ class Paddle
         return array(
             'paddle_vendor_id'  => self::$vendorId,
             'paddle_auth_code'  => self::$authCode,
-            'paddle_public_key' => self::$publicKey,
+            // 'paddle_public_key' => self::$publicKey,
         );
     }
 

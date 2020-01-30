@@ -6,7 +6,7 @@ use ThemesGrove\Paddle\ApiResource;
 use ThemesGrove\Paddle\HttpClient\CurlClient;
 use ThemesGrove\Paddle\Paddle;
 
-class PayLink extends ApiResource
+class Product extends ApiResource
 {
     const CLASS_URL = 'product';
 
@@ -17,13 +17,13 @@ class PayLink extends ApiResource
         self::$credentials = Paddle::getApiCredentials();
     }
 
-    public static function create(array $purchaseData)
+    public static function list()
     {
         self::init();
 
-        $url = self::requestUrl() . '/' . 'generate_pay_link';
+        $url = self::requestUrl() . '/' . 'get_products';
 
-        $bodyData = array_merge(self::$credentials, $purchaseData);
+        $bodyData = self::$credentials;
 
         return CurlClient::sendHttpRequest($url, 'POST', $bodyData);
     }

@@ -1,0 +1,34 @@
+{
+    "name": "themesgrove/paddlegateway",
+    "description": "PHP Library for Paddle Payment Gateway.",
+    "keywords": [
+        "paddle",
+        "package"
+    ],
+    "homepage": "https://gitlab.com/themesgrove/paddlegateway",
+    "license": "MIT",
+    "authors": [{
+            "name": "Themes Grove",
+            "email": "help@themesgrove.com",
+            "homepage": "http://themesgrove.com"
+        },
+        {
+            "name": "Al-Amin Firdows",
+            "email": "alaminfirdows@gmail.com.com",
+            "homepage": "http://alamin.me"
+        }
+    ],
+    "require": {
+        "php": ">=7.2"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "ThemesGrove\\Paddle\\": "src",
+            "ThemesGrove\\Paddle\\Product\\": "src/Paddle/Product"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {}
+    }
+}

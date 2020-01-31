@@ -17,11 +17,11 @@ class PayLink extends ApiResource
         self::$credentials = Paddle::getApiCredentials();
     }
 
-    public static function create(array $purchaseData)
+    public static function create(array $purchaseData): string
     {
         self::init();
 
-        $url = self::requestUrl() . '/' . 'generate_pay_link';
+        $url = self::vendorUrl(self::CLASS_URL . '/' . 'generate_pay_link');
 
         $bodyData = array_merge(self::$credentials, $purchaseData);
 

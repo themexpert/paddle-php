@@ -6,7 +6,7 @@ use ThemesGrove\Paddle\Util\Util;
 
 class CurlClient implements ClientInterface
 {
-    public static function sendHttpRequest($url, $method, $bodyData, $config = array())
+    public static function sendHttpRequest(string $url, string $method, array $bodyData = null, array $config = array()): string
     {
         // Check if cURL is not enabled
         // TODO: Add Exception

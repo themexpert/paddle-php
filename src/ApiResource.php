@@ -2,20 +2,9 @@
 
 namespace ThemesGrove\Paddle;
 
-abstract class ApiResource
+use ThemesGrove\Paddle\Util\Url;
+
+abstract class ApiResource extends Url
 {
-    public static function apiBaseUrl()
-    {
-        return API_ROOT_URL;
-    }
-
-    public static function classUrl()
-    {
-        return str_replace('.', '/', static::CLASS_URL);
-    }
-
-    public static function requestUrl()
-    {
-        return API_ROOT_URL . static::classUrl();
-    }
+    //
 }

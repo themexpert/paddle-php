@@ -8,13 +8,13 @@
     "homepage": "https://gitlab.com/themesgrove/paddlegateway",
     "license": "MIT",
     "authors": [{
-            "name": "Themes Grove",
+            "name": "ThemesGrove",
             "email": "help@themesgrove.com",
             "homepage": "http://themesgrove.com"
         },
         {
             "name": "Al-Amin Firdows",
-            "email": "alaminfirdows@gmail.com.com",
+            "email": "alaminfirdows@gmail.com",
             "homepage": "http://alamin.me"
         }
     ],
@@ -25,7 +25,9 @@
     "autoload": {
         "psr-4": {
             "ThemesGrove\\Paddle\\": "src",
-            "ThemesGrove\\Paddle\\Product\\": "src/Paddle/Product"
+            "ThemesGrove\\Paddle\\Product\\": "src/Paddle/Product",
+            "ThemesGrove\\Paddle\\Checkout\\": "src/Paddle/Checkout",
+            "ThemesGrove\\Paddle\\Subscription\\": "src/Paddle/Subscription"
         }
     },
     "autoload-dev": {

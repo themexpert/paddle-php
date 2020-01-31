@@ -4,7 +4,6 @@ namespace ThemesGrove\Paddle\Util;
 
 class Currency
 {
-
     protected $code;
 
     public function __construct($code)

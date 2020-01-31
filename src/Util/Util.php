@@ -31,4 +31,16 @@ abstract class Util
             return $value;
         }
     }
+
+    public static function filterValidUrl(string $url)
+    {
+        // TODO:: Add Exception
+        return filter_var($url, FILTER_VALIDATE_URL) ? $url : die("Callback URL ($url) is not valid");
+    }
+
+    public static function filterValidEmail(string $email)
+    {
+        // TODO:: Add Exception
+        return filter_var($email, FILTER_VALIDATE_EMAIL) ? $email : die("Email ($email) is not valid");
+    }
 }

@@ -2,11 +2,8 @@
 
 namespace ThemesGrove\Paddle;
 
-use ThemesGrove\Paddle\HttpClient\CurlClient;
-
-define("PADDLE_ROOT_URL", "https://vendors.paddle.com/");
-define("API_ROOT_URL", PADDLE_ROOT_URL . "api/2.0/");
-define("PADDLE_CREATE_SUBSCRIPTION_PLAN_URL", API_ROOT_URL . "subscription/plans_create");
+define("PADDLE_VENDOR_URL", "https://vendors.paddle.com");
+define("PADDLE_CHECKOUT_URL", "https://checkout.paddle.com");
 
 class Paddle
 {

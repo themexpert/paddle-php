@@ -17,11 +17,11 @@ class Product extends ApiResource
         self::$credentials = Paddle::getApiCredentials();
     }
 
-    public static function list()
+    public static function list(): string
     {
         self::init();
 
-        $url = self::requestUrl() . '/' . 'get_products';
+        $url = self::vendorUrl(self::CLASS_URL . '/' . 'get_products');
 
         $bodyData = self::$credentials;
 

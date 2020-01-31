@@ -4,7 +4,6 @@ namespace ThemesGrove\Paddle\Util;
 
 class Price
 {
-
     protected $amount = 0;
 
     protected $currency = NULL;

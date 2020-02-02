@@ -58,8 +58,8 @@ class Paddle
         }
 
         return array(
-            'paddle_vendor_id'  => self::$vendorId,
-            'paddle_auth_code'  => self::$authCode,
+            'vendor_id'  => self::$vendorId,
+            'vendor_auth_code'  => self::$authCode,
             // 'paddle_public_key' => self::$publicKey,
         );
     }

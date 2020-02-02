@@ -24,7 +24,7 @@ class User extends ApiResource
 
         $email = Util::filterValidEmail($email);
 
-        $url = self::checkoutUrl(self::CLASS_URL) . '/' . 'history' . '?vendor_id=' . self::$credentials['paddle_vendor_id'] . '&product_id=' . $product_id . '&email=' . $email;
+        $url = self::checkoutUrl(self::CLASS_URL) . '/' . 'history' . '?vendor_id=' . self::$credentials['vendor_id'] . '&product_id=' . $product_id . '&email=' . $email;
 
         return CurlClient::sendHttpRequest($url, 'GET');
     }

@@ -1,21 +1,20 @@
 {
-    "name": "themesgrove/paddlegateway",
+    "name": "themexpert/paddle-php",
     "description": "PHP Library for Paddle Payment Gateway.",
     "keywords": [
         "paddle",
         "package"
     ],
-    "homepage": "https://gitlab.com/themesgrove/paddlegateway",
+    "homepage": "https://github.com/themexpert/paddle-php",
     "license": "MIT",
     "authors": [{
-            "name": "ThemesGrove",
-            "email": "help@themesgrove.com",
-            "homepage": "http://themesgrove.com"
+            "name": "ThemeXpert",
+            "email": "help@themexpert.com",
+            "homepage": "http://themexpert.com"
         },
         {
             "name": "Al-Amin Firdows",
-            "email": "alaminfirdows@gmail.com",
-            "homepage": "http://alamin.me"
+            "email": "alaminfirdows@gmail.com"
         }
     ],
     "require": {
@@ -24,11 +23,11 @@
     "require-dev": {},
     "autoload": {
         "psr-4": {
-            "ThemesGrove\\Paddle\\": "src",
-            "ThemesGrove\\Paddle\\Product\\": "src/Paddle/Product",
-            "ThemesGrove\\Paddle\\Checkout\\": "src/Paddle/Checkout",
-            "ThemesGrove\\Paddle\\Subscription\\": "src/Paddle/Subscription",
-            "ThemesGrove\\Paddle\\Alert\\": "src/Paddle/Alert"
+            "ThemeXpert\\Paddle\\": "src",
+            "ThemeXpert\\Paddle\\Product\\": "src/Paddle/Product",
+            "ThemeXpert\\Paddle\\Checkout\\": "src/Paddle/Checkout",
+            "ThemeXpert\\Paddle\\Subscription\\": "src/Paddle/Subscription",
+            "ThemeXpert\\Paddle\\Alert\\": "src/Paddle/Alert"
         }
     },
     "autoload-dev": {

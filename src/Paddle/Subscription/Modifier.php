@@ -1,10 +1,10 @@
 <?php
 
-namespace ThemesGrove\Paddle\Subscription;
+namespace ThemeXpert\Paddle\Subscription;
 
-use ThemesGrove\Paddle\ApiResource;
-use ThemesGrove\Paddle\HttpClient\CurlClient;
-use ThemesGrove\Paddle\Paddle;
+use ThemeXpert\Paddle\ApiResource;
+use ThemeXpert\Paddle\HttpClient\CurlClient;
+use ThemeXpert\Paddle\Paddle;
 
 class Modifier extends ApiResource
 {

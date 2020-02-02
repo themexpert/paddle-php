@@ -1,8 +1,8 @@
 <?php
 
-namespace ThemesGrove\Paddle\HttpClient;
+namespace ThemeXpert\Paddle\HttpClient;
 
-use ThemesGrove\Paddle\Util\Util;
+use ThemeXpert\Paddle\Util\Util;
 
 class CurlClient implements ClientInterface
 {

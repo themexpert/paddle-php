@@ -1,10 +1,10 @@
 <?php
 
-namespace ThemesGrove\Paddle\Product;
+namespace ThemeXpert\Paddle\Product;
 
-use ThemesGrove\Paddle\ApiResource;
-use ThemesGrove\Paddle\HttpClient\CurlClient;
-use ThemesGrove\Paddle\Paddle;
+use ThemeXpert\Paddle\ApiResource;
+use ThemeXpert\Paddle\HttpClient\CurlClient;
+use ThemeXpert\Paddle\Paddle;
 
 class Product extends ApiResource
 {

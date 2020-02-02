@@ -1,6 +1,6 @@
 <?php
 
-namespace ThemesGrove\Paddle;
+namespace ThemeXpert\Paddle;
 
 define("PADDLE_VENDOR_URL", "https://vendors.paddle.com");
 define("PADDLE_CHECKOUT_URL", "https://checkout.paddle.com");

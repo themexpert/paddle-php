@@ -1,10 +1,10 @@
 <?php
 
-namespace ThemesGrove\Paddle\Alert;
+namespace ThemeXpert\Paddle\Alert;
 
-use ThemesGrove\Paddle\ApiResource;
-use ThemesGrove\Paddle\HttpClient\CurlClient;
-use ThemesGrove\Paddle\Paddle;
+use ThemeXpert\Paddle\ApiResource;
+use ThemeXpert\Paddle\HttpClient\CurlClient;
+use ThemeXpert\Paddle\Paddle;
 
 class Webhook extends ApiResource
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace ThemesGrove\Paddle\Checkout;
+namespace ThemeXpert\Paddle\Checkout;
 
-use ThemesGrove\Paddle\ApiResource;
-use ThemesGrove\Paddle\HttpClient\CurlClient;
-use ThemesGrove\Paddle\Util\Util;
+use ThemeXpert\Paddle\ApiResource;
+use ThemeXpert\Paddle\HttpClient\CurlClient;
+use ThemeXpert\Paddle\Util\Util;
 
 class Order extends ApiResource
 {

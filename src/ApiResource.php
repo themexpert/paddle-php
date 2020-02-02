@@ -1,8 +1,8 @@
 <?php
 
-namespace ThemesGrove\Paddle;
+namespace ThemeXpert\Paddle;
 
-use ThemesGrove\Paddle\Util\Url;
+use ThemeXpert\Paddle\Util\Url;
 
 abstract class ApiResource extends Url
 {

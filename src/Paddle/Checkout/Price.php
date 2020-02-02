@@ -1,9 +1,9 @@
 <?php
 
-namespace ThemesGrove\Paddle\Checkout;
+namespace ThemeXpert\Paddle\Checkout;
 
-use ThemesGrove\Paddle\ApiResource;
-use ThemesGrove\Paddle\HttpClient\CurlClient;
+use ThemeXpert\Paddle\ApiResource;
+use ThemeXpert\Paddle\HttpClient\CurlClient;
 
 class Price extends ApiResource
 {

@@ -7,12 +7,14 @@ PHP Library for Paddle Payment Gateway
 Via Composer
 
 ``` bash
-$ composer require themesgrove/paddlegateway
+$ composer require themexpert/paddle-php
 ```
 
 ## Usage
 
 ``` php
+use ThemeXpert\Paddle\Paddle; 
+
 $paddle = new Paddle();
 $paddle::setApiCredentials('paddle_vendor_id', 'paddle_auth_code');
 
@@ -27,6 +29,6 @@ $ phpunit
 
 ## Credits
 
-- [themesgrove](https://gitlab.com/themesgrove)
+- [themexpert](https://github.com/themexpert)
 - [alaminfirdows](https://github.com/alaminfiedows)
 

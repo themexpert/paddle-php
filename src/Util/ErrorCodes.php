@@ -1,6 +1,6 @@
 <?php
 
-namespace ThemesGrove\Paddle\Util;
+namespace ThemeXpert\Paddle\Util;
 
 class ErrorCodes
 {

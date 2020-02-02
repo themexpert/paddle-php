@@ -20,15 +20,3 @@ $paddle::setApiCredentials('paddle_vendor_id', 'paddle_auth_code');
 
 echo Product::list();
 ```
-
-## Testing
-
-``` bash
-$ phpunit
-```
-
-## Credits
-
-- [themexpert](https://github.com/themexpert)
-- [alaminfirdows](https://github.com/alaminfiedows)
-

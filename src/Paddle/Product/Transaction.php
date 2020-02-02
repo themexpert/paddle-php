@@ -27,7 +27,7 @@ class Transaction extends ApiResource
 
         $bodyData = !empty($page) ? array_merge(self::$credentials, ['page' => $page]) : self::$credentials;
 
-        die(print_r($bodyData));
+        // die(print_r($bodyData));
 
         return CurlClient::sendHttpRequest($url, 'POST', $bodyData);
     }

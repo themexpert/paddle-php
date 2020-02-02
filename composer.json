@@ -27,7 +27,8 @@
             "ThemesGrove\\Paddle\\": "src",
             "ThemesGrove\\Paddle\\Product\\": "src/Paddle/Product",
             "ThemesGrove\\Paddle\\Checkout\\": "src/Paddle/Checkout",
-            "ThemesGrove\\Paddle\\Subscription\\": "src/Paddle/Subscription"
+            "ThemesGrove\\Paddle\\Subscription\\": "src/Paddle/Subscription",
+            "ThemesGrove\\Paddle\\Alert\\": "src/Paddle/Alert"
         }
     },
     "autoload-dev": {

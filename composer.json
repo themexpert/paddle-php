@@ -24,6 +24,7 @@
     "autoload": {
         "psr-4": {
             "ThemeXpert\\Paddle\\": "src",
+            "ThemeXpert\\Paddle\\Util\\": "src/Util",
             "ThemeXpert\\Paddle\\Product\\": "src/Paddle/Product",
             "ThemeXpert\\Paddle\\Checkout\\": "src/Paddle/Checkout",
             "ThemeXpert\\Paddle\\Subscription\\": "src/Paddle/Subscription",

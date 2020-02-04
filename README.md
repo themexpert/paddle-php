@@ -1,6 +1,16 @@
-# PaddleGateway
+# Paddle API PHP Client
 
-PHP Library for Paddle Payment Gateway
+PHP SDK for Paddle Payment Gateway. Support api `v1` and `v2` out-of-the-box. 
+
+Paddle features supported:
+
+- Create product while checkout and validate response
+- Subscription creation
+- Coupone management
+- License management
+- Transaction and pay slip generate
+- Checkout API
+- Webhook support
 
 ## Install
 
@@ -21,14 +31,6 @@ $paddle::setApiCredentials('paddle_vendor_id', 'paddle_auth_code');
 echo Product::list();
 ```
 
-## Testing
+## License
 
-``` bash
-$ phpunit
-```
-
-## Credits
-
-- [themexpert](https://github.com/themexpert)
-- [alaminfirdows](https://github.com/alaminfiedows)
-
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

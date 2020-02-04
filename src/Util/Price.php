@@ -4,14 +4,14 @@ namespace ThemeXpert\Paddle\Util;
 
 class Price
 {
-    protected $amount = 0;
+    protected $amount = '0';
 
     protected $currency = NULL;
 
-    public function __construct($amount, Currency $currency)
+    public function __construct(Currency $currency, string $amount)
     {
-        $this->amount = $amount;
         $this->currency = $currency;
+        $this->amount = $amount;
     }
 
     public function __toString()

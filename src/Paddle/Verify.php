@@ -27,8 +27,11 @@ class Verify extends ApiResource
     public static function getApiPublicKey(): string
     {
         if (empty(self::$publicKey)) {
-            // TODO: Add Exception
-            die('You must enter your Public Key.');
+            self::$publicKey = Paddle::getApiPublicKey();
+            if (empty(self::$publicKey)) {
+                // TODO: Add Exception
+                die('You must enter your Public Key.');
+            }
         }
 
         return self::$publicKey;
@@ -36,11 +39,12 @@ class Verify extends ApiResource
 
     public static function webHookSignature(string $signature, array $webHookData, string $publicKey = null): array
     {
-        if ($publicKey) {
+        if (!empty($publicKey)) {
             self::setApiPublicKey($publicKey);
         }
 
         if ($publicKey = self::getApiPublicKey()) {
+
             $public_key = openssl_get_publickey($publicKey);
 
             // Get the p_signature parameter & base64 decode it.
@@ -81,7 +85,7 @@ class Verify extends ApiResource
             $response =  array(
                 'success'   => false,
                 'error'  => array(
-                    'message' => 'Your Public Key is not set'
+                    'message' => 'Your Public Key is not set.'
                 ),
             );
         }

@@ -62,6 +62,11 @@ class Paddle
         );
     }
 
+    public static function getApiPublicKey(): string
+    {
+        return self::$publicKey;
+    }
+
     public static function unSetApiCredentials(): bool
     {
         unset(self::$vendorId);

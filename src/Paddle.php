@@ -36,16 +36,14 @@ class Paddle
     {
         self::$vendorId   = (int) trim($vendorId)   ?? null;
         self::$authCode   = trim($authCode)         ?? null;
-        // self::$publicKey  = trim($publicKey)        ?? null;
+        self::$publicKey  = trim($publicKey)        ?? null;
 
         return true;
     }
 
-    public static function unSetApiCredentials(): bool
+    public static function setApiPublicKey(string $publicKey): bool
     {
-        unset(self::$vendorId);
-        unset(self::$authCode);
-        // unset(self::$publicKey);
+        self::$publicKey = trim($publicKey) ?? null;
 
         return true;
     }
@@ -60,8 +58,17 @@ class Paddle
         return array(
             'vendor_id'  => self::$vendorId,
             'vendor_auth_code'  => self::$authCode,
-            // 'paddle_public_key' => self::$publicKey,
+            'paddle_public_key' => self::$publicKey,
         );
+    }
+
+    public static function unSetApiCredentials(): bool
+    {
+        unset(self::$vendorId);
+        unset(self::$authCode);
+        unset(self::$publicKey);
+
+        return true;
     }
 
     public function __distrust()

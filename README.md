@@ -1,32 +1,31 @@
 # Paddle API PHP Client
 
-PHP SDK for Paddle Payment Gateway. Support api `v1` and `v2` out-of-the-box. 
+PHP SDK for Paddle Payment Gateway. Support api `v1` and `v2` out-of-the-box.
 
 Paddle features supported:
 
-- Create product while checkout and validate response
-- Subscription creation
-- Coupone management
-- License management
-- Transaction and pay slip generate
-- Checkout API
-- Webhook support
+-   Create product while checkout and validate response
+-   Subscription creation
+-   Coupone management
+-   License management
+-   Transaction and pay slip generate
+-   Checkout API
+-   Webhook support
 
 ## Install
 
 Via Composer
 
-``` bash
+```bash
 $ composer require themexpert/paddle-php
 ```
 
 ## Usage
 
-``` php
-use ThemeXpert\Paddle\Paddle; 
+```php
+use ThemeXpert\Paddle\Paddle;
 
-$paddle = new Paddle();
-$paddle::setApiCredentials('paddle_vendor_id', 'paddle_auth_code');
+Paddle::setApiCredentials('paddle_vendor_id', 'paddle_auth_code');
 
 echo Product::list();
 ```

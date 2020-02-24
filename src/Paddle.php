@@ -5,7 +5,7 @@ namespace ThemeXpert\Paddle;
 define("PADDLE_VENDOR_URL", "https://vendors.paddle.com");
 define("PADDLE_CHECKOUT_URL", "https://checkout.paddle.com");
 
-class Paddle
+final class Paddle
 {
     /**
      * Your Paddle Vendor/Account ID
@@ -25,8 +25,38 @@ class Paddle
      */
     private static $publicKey;
 
+    /**
+     * Cloning is forbidden.
+     *
+     * This method protect the class to cloneing instance.
+     *
+     * @access public
+     */
+    public function __clone()
+    {
+        die('Cloning is forbidden!');
+    }
+
+    /**
+     * Unserialize instances of this class is forbidden.
+     *
+     * This method protect the class to create unserialize instances.
+     *
+     * @access public
+     */
+    public function __wakeup()
+    {
+        die('Unserialize instances is forbidden!');
+    }
+
+    /**
+     * Construct Main class SmartPay.
+     *
+     * @access public
+     */
     public function __construct(string $vendorId = null, string $authCode = null, string $publicKey = null)
     {
+
         if ($vendorId && $authCode) {
             self::setApiCredentials($vendorId, $authCode, $publicKey);
         }

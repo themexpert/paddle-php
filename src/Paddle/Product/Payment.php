@@ -17,13 +17,19 @@ class Payment extends ApiResource
         self::$credentials = Paddle::getApiCredentials();
     }
 
-    public static function refund(string $orderId, float $amount, string $reason = ''): string
+    public static function refund(string $orderId, string $amount = '', string $reason = ''): string
     {
         self::init();
 
         $url = self::vendorUrl(self::$classUrl . '/' . 'refund');
+        
+        $postdata = ['order_id' => $orderId];
+        
+        if($amount) $postdata['amount'] = (float) $amount;
+        
+        if($reason) $postdata['reason'] = $reason;
 
-        $bodyData = array_merge(self::$credentials, ['order_id' => $orderId, 'amount' => $amount, 'reason' => $reason]);
+        $bodyData = array_merge(self::$credentials, $postdata);
 
         return CurlClient::sendHttpRequest($url, 'POST', $bodyData);
     }

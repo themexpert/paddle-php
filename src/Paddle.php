@@ -2,8 +2,10 @@
 
 namespace ThemeXpert\Paddle;
 
-define("PADDLE_VENDOR_URL", "https://vendors.paddle.com");
-define("PADDLE_CHECKOUT_URL", "https://checkout.paddle.com");
+define('PADDLE_VENDOR_URL', 'https://vendors.paddle.com');
+define('PADDLE_CHECKOUT_URL', 'https://checkout.paddle.com');
+define('PADDLE_SANDBOX_VENDOR_URL', 'https://sandbox-vendors.paddle.com');
+define('PADDLE_SANDBOX_CHECKOUT_URL', 'https://sandbox-checkout.paddle.com');
 
 final class Paddle
 {
@@ -24,6 +26,12 @@ final class Paddle
      * @var string
      */
     private static $publicKey;
+
+    /**
+     * Test Mode For Paddle
+     * @var boolean
+     */
+    private static $testMode = false;
 
     /**
      * Cloning is forbidden.
@@ -109,5 +117,28 @@ final class Paddle
     public function __distrust()
     {
         self::unSetApiCredentials();
+    }
+
+    public static function setTestMode(bool $value) : void
+    {
+        self::$testMode = $value;
+    }
+    
+    public static function getCheckoutURL() : string
+    {
+        if(self::$testMode) {
+            return PADDLE_SANDBOX_CHECKOUT_URL;
+        } else {
+            return PADDLE_CHECKOUT_URL;
+        }
+    }
+
+    public static function getVendorURL() : string
+    {
+        if(self::$testMode) {
+            return PADDLE_SANDBOX_VENDOR_URL;
+        } else {
+            return PADDLE_VENDOR_URL;
+        }
     }
 }

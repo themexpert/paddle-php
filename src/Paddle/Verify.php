@@ -10,7 +10,7 @@ class Verify extends ApiResource
      */
     private static $publicKey;
 
-    public function __construct(string $publicKey = null)
+    public function __construct(?string $publicKey = null)
     {
         if ($publicKey) {
             self::setApiPublicKey($publicKey);
@@ -37,7 +37,7 @@ class Verify extends ApiResource
         return self::$publicKey;
     }
 
-    public static function webHookSignature(string $signature, array $webHookData, string $publicKey = null): array
+    public static function webHookSignature(string $signature, array $webHookData, ?string $publicKey = null): array
     {
         if (!empty($publicKey)) {
             self::setApiPublicKey($publicKey);

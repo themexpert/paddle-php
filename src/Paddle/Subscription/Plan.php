@@ -28,7 +28,7 @@ class Plan extends ApiResource
         return CurlClient::sendHttpRequest($url, 'POST', $bodyData);
     }
 
-    public static function list(int $plan = null): string
+    public static function list(?int $plan = null): string
     {
         self::init();
 

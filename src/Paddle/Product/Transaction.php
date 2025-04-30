@@ -17,7 +17,7 @@ class Transaction extends ApiResource
         self::$credentials = Paddle::getApiCredentials();
     }
 
-    public static function list(string $entity, int $id, int $page = null): string
+    public static function list(string $entity, int $id, ?int $page = null): string
     {
         // TODO:: Verify $entity as only  User ID, Subscription ID, Order ID, Checkout ID (hash) or Product ID
         self::init();

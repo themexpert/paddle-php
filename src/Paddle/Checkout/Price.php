@@ -9,7 +9,7 @@ class Price extends ApiResource
 {
     const CLASS_URL = 'prices';
 
-    public static function get(array $productIds, array $coupons, string $customerCountry = null, string $customerIp = null): string
+    public static function get(array $productIds, array $coupons, ?string $customerCountry = null, ?string $customerIp = null): string
     {
         if (empty($customerCountry) && empty($customerIp)) {
             // TODO:: Add Exception

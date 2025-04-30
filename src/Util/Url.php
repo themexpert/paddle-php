@@ -5,9 +5,9 @@ use ThemeXpert\Paddle\Paddle;
 
 class Url
 {
-    public static function getUrl($base, $version = '2.0', $path)
+    public static function getUrl($base, $version, $path)
     {
-        return "{$base}/api/{$version}/${path}";
+        return "{$base}/api/{$version}/{$path}";
     }
 
     public static function checkoutUrl($path, $version = '2.0')

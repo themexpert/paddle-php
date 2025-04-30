@@ -62,7 +62,7 @@ final class Paddle
      *
      * @access public
      */
-    public function __construct(string $vendorId = null, string $authCode = null, string $publicKey = null)
+    public function __construct(?string $vendorId = null, ?string $authCode = null, ?string $publicKey = null)
     {
 
         if ($vendorId && $authCode) {
@@ -70,11 +70,11 @@ final class Paddle
         }
     }
 
-    public static function setApiCredentials(string $vendorId, string $authCode, string $publicKey = null): bool
+    public static function setApiCredentials(string $vendorId, string $authCode, ?string $publicKey = null): bool
     {
-        self::$vendorId   = (int) trim($vendorId)   ?? null;
-        self::$authCode   = trim($authCode)         ?? null;
-        self::$publicKey  = trim($publicKey)        ?? null;
+        self::$vendorId  = !empty($vendorId) ? (int) trim($vendorId) : null;
+        self::$authCode  = !empty($authCode) ? trim($authCode) : null;
+        self::$publicKey = !empty($publicKey) ? trim($publicKey) : null;
 
         return true;
     }

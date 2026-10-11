@@ -2,6 +2,8 @@
 
 namespace ThemeXpert\Paddle;
 
+use ThemeXpert\Paddle\Exception\ArgumentException;
+
 define('PADDLE_VENDOR_URL', 'https://vendors.paddle.com');
 define('PADDLE_CHECKOUT_URL', 'https://checkout.paddle.com');
 define('PADDLE_SANDBOX_VENDOR_URL', 'https://sandbox-vendors.paddle.com');
@@ -89,8 +91,7 @@ final class Paddle
     public static function getApiCredentials(): array
     {
         if (empty(self::$vendorId) || empty(self::$authCode)) {
-            // TODO: Add Exception
-            die('You must enter your Vendor ID and Auth Codes.');
+            throw new ArgumentException('You must enter your Vendor ID and Auth Codes.');
         }
 
         return array(
